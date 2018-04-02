@@ -199,5 +199,3 @@ def getTimeSeriesVerticalWeather(org, lon, lat):
         count += 1
 
     return [dates, analyzeDetailPressure(iodata), analyzeDetailT(iodata), analyzeDetailRH(iodata), analyzeDetailwindU(iodata), analyzeDetailwindV(iodata)]
-
-print(getTimeSeriesVerticalWeather('EC', 121, 31))
