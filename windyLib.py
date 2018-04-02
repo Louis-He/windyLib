@@ -154,7 +154,7 @@ def analyzeDetailwindU(JSON):
     WU250 = []
     count = 0
     for i in WU800:
-        WU750.append((WU700[count] + WU800[count])/2.0)
+        WU750.append((WU700[count] + WU800[count]) / 2.0)
         WU650.append((WU600[count] + WU700[count]) / 2.0)
         WU550.append((WU500[count] + WU600[count]) / 2.0)
         WU450.append((WU400[count] + WU500[count]) / 2.0)
@@ -165,11 +165,20 @@ def analyzeDetailwindU(JSON):
     # print('WU analyzed.')
     return [WU1000,WU950,WU900,WU850,WU800,WU750,WU700,WU650,WU600,WU550,WU500,WU450,WU400,WU350,WU300,WU250,WU200]
 
-def getTimeSeriesVerticalWeather(insource, inlon, inlat):
-    source = insource
+def analyzeDetailPressure(JSON):
+    T800 = JSON['data']['temp-800h']
+    P = []
+    for row in range(0, 17):
+        P.append([])
+        for i in range(0, len(T800)):
+            P[row].append(1000 - 50 * row)
+    return P
+
+def getTimeSeriesVerticalWeather(org, lon, lat):
+    source = org
     try:
-        lon = float(inlon)
-        lat = float(inlat)
+        lon = float(lon)
+        lat = float(lat)
     except:
         return False
 
@@ -188,5 +197,7 @@ def getTimeSeriesVerticalWeather(insource, inlon, inlat):
             newdates.append(i)
             ticks.append(count)
         count += 1
-    #print('DATA RECEIVED.')
-    return [dates, analyzeDetailT(iodata), analyzeDetailRH(iodata), analyzeDetailwindU(iodata), analyzeDetailwindV(iodata)]
+
+    return [dates, analyzeDetailPressure(iodata), analyzeDetailT(iodata), analyzeDetailRH(iodata), analyzeDetailwindU(iodata), analyzeDetailwindV(iodata)]
+
+print(getTimeSeriesVerticalWeather('EC', 121, 31))
