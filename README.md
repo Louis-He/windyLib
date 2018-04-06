@@ -1,5 +1,5 @@
 # windyLib
-version: 0.1.2 [![](https://img.shields.io/badge/python-3.5-blue.svg)](https://www.python.org/download/releases/3.5/)
+version: 0.1.3 [![](https://img.shields.io/badge/python-3.5-blue.svg)](https://www.python.org/download/releases/3.5/)
 ONLY WORK ON PYTHON 3.
 ## Description
 windyLib is a library including helper functions which can request and analyze the weather forecast data from www.windy.com
@@ -8,26 +8,44 @@ windyLib is a library including helper functions which can request and analyze t
 ```
 pip3 install windyLib
 ```
-
-## Functions
+if you have a "permission" denied error, please try:
 ```
-getWeatherData(org, lon, lat)
+sudo pip3 install windyLib
+```
+
+## Class
+```
+class windyWeather()
 ```
 - org (string): 'EC' or 'GFS' (one of the world weather models)
 - lon (float): longitude of the location
 - lat (float): latitude of the location
+- JSON (json): the json type of the data returned by windy.com
+- verticalInfo (3D array): proceesed data from JSON
+
+## Functions
+```
+updateInfo(self, inputOrg, inputLon, inputLat)
+```
+This function is used to update the point's information. Calling this function will automatically update JSON and verticalInfo.
+
+- inputOrg (string): 'EC' or 'GFS' (one of the world weather models)
+- inputLon (float): longitude of the location
+- inputLat (float): latitude of the location
+
+```
+updateWeatherData()
+```
+This function will update the weather information of picked point.
 
 return type:
 
 - (json) the raw json file from windy.com
 
 ```
-getTimeSeriesVerticalWeather(org, lon, lat)
+def getVerticalWeather(self)
 ```
-- org (string): 'EC' or 'GFS' (one of the world weather models)
-- lon (float): longitude of the location
-- lat (float): latitude of the location
-
+This function will return a 3D array with all the data processed 
 return type:
 
 - (array) 3D array([element, time, pressure(Geoheight)]) after the analysis from the json data from windy.com
@@ -35,6 +53,43 @@ return type:
 [time, Pressure(Geoheight), Temperature, Humidity, windUcomonent, windVcomponent]
 - every component is a 2D array, if you want to achieve only one time point, for example, the initial value of Temperature, you can use Temperature[0]
 - every 1D array in the previous 2D array is element vs. Pressure(Geoheight)
-## Further
 
-more functions will be added
+```
+getCertainTimeVerticalWeather(self, timePoint)
+```
+This function will return the detailed vertical weather in a certain time point.
+
+- timePoint (int): (you can use getNumberOfData(self, timeStr) function to find index)the Index of the time you want to get the detailed weather information
+
+return type:
+
+- (array): [time, [Pressure], [Temperature], [Humidity], [windUcomonent], [windVcomponent]]
+
+```
+getNumberOfData(self, timeStr)
+```
+This function will return the index of the time in the time points array
+
+- timeStr (string): the time you want to find, with format(DDHH).
+
+return type:
+
+- time point(int): (int)
+
+```
+getInfo(self)
+```
+This function will return the basic information of a picked points
+
+return type:
+
+- array: [organization, longitude of point, latitude of point] 
+
+```
+def getJSON(self):
+```
+This function will return the json retrieved from windy.com
+
+return type:
+
+- json: (json)
