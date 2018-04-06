@@ -1,5 +1,5 @@
 # windyLib
-version: 0.1.3 [![](https://img.shields.io/badge/python-3.5-blue.svg)](https://www.python.org/download/releases/3.5/)
+version: 0.1.4 [![](https://img.shields.io/badge/python-3.5-blue.svg)](https://www.python.org/download/releases/3.5/)
 ONLY WORK ON PYTHON 3.
 ## Description
 windyLib is a library including helper functions which can request and analyze the weather forecast data from www.windy.com

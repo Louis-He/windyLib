@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(name = "windyLib",
-    version = "0.1.3",
+    version = "0.1.4",
     description = "weather data access and analysis from www.windy.com",
     author = "Louis He",
     author_email = "1726110778@qq.com",
@@ -9,7 +9,7 @@ setup(name = "windyLib",
     packages= find_packages(),
     py_modules=['windyLib'],
     long_description = """windyLib
-version: 0.1.3 [ONLY COMPATIBLE WITH PYTHON 3]
+version: 0.1.4 [ONLY COMPATIBLE WITH PYTHON 3]
 
 Description
 windyLib is a library including helper functions which can request and analyze the weather forecast data from www.windy.com, please visit project homepage for more information: https://github.com/Louis-He/windyLib

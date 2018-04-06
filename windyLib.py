@@ -1,7 +1,6 @@
-#NOAA-GFS
-#https://node.windy.com/forecast/v2.1/gfs/43.663/-79.399?source=detail
-#EC
-#https://node.windy.com/forecast/v2.1/ecmwf/43.663/-79.399?setup=summary&includeNow=true&source=hp
+# credit @Author: Louis He
+# 2018 windyLib.py
+
 import json
 import urllib.request
 import time
