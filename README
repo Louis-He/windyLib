@@ -83,7 +83,7 @@ This function will return the basic information of a picked points
 
 return type:
 
-- array: [organization, longitude of point, latitude of point]
+- array: [organization, longitude of point, latitude of point, reference time]
 
 ```
 def getJSON(self):
