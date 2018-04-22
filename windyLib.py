@@ -272,13 +272,14 @@ class windyWeather():
         return -1
 
     def getInfo(self):
-        return [self.org, self.lon, self.lat]
+        iodata = self.JSON
+        return [self.org, self.lon, self.lat, iodata['header']['refTime']]
 
     def getJSON(self):
         return self.JSON
 
-'''
-a = windyLib.windyWeather('ec', 121, 31)
-print(a.getInfo())
-print(a.getCertainTimeVerticalWeather(0))
-'''
+
+#a = windyLib.windyWeather('ec', 121, 31)
+#a = windyWeather('ec', 121, 31)
+#print(a.getInfo())
+#print(a.getCertainTimeVerticalWeather(0))
